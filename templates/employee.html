@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FLYAPP</title>
+
+    <!-- Font Icon -->
+    <link href="{{ url_for('static', filename='fonts/material-icon/css/material-design-iconic-font.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
+
+    <!-- Main css -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+    <div class="main">
+
+        <div class="header">
+            <a href="/">
+            <img src="{{ url_for('static', filename='images/header-text.png') }}" alt="">
+                </a>
+        </div>
+
+        <div class="container" style="margin-top: 50px">
+            <form id="booking-form" class="booking-form" method="POST">
+                <h5>Employee Details</h5>
+
+                <div class="form-group">
+                    <div class="form-destination">
+                       <label for="empid">Employee ID</label>
+                       <input type="text" id="empid" name="empid" " />
+                    </div>
+                    <div class="form-destination">
+                         <label for="fname">First Name</label>
+                         <input type="text" id="fname" name="fname"/>
+                    </div>
+                    <div class="form-destination">
+                         <label for="lname">Last Name</label>
+                         <input type="text" id="lname" name="lname"/>
+                   </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-destination">
+                        <label for="jobtype">Job Type</label>
+                        <input type="text" id="jobtype" name="jobtype" />
+                    </div>
+                    <div class="form-destination">
+                        <label for="sex">Sex</label>
+                        <input type="text" id="sex" name="sex"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-destination" style="width=100%">
+                        <label for="address" size="50">Address</label>
+                        <!--<input type="text" id="address" name="address"/>-->
+                        <textarea id="address" name="address" cols="69" rows="5"></textarea>
+                    </div>
+                    <div class="form-submit">
+                        <input type="submit" id="submit" class="submit" value="Book now" />
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

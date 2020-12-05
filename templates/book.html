@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FLYAPP</title>
+
+    <!-- Font Icon -->
+    <link href="{{ url_for('static', filename='fonts/material-icon/css/material-design-iconic-font.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
+
+    <!-- Main css -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+    <div class="main">
+
+        <div class="header">
+            <a href="/">
+            <img src="{{ url_for('static', filename='images/header-text.png') }}" alt="">
+                </a>
+        </div>
+
+        <div class="container" style="margin-top: 50px">
+            <form id="booking-form" class="booking-form" method="POST">
+                <h5>Passenger Details</h5>
+
+                <div class="form-group">
+                    <div class="form-destination">
+                       <label for="passport_no">Passport Number</label>
+                       <input type="text" id="passport_no" name="passport_no" " />
+                    </div>
+                    <div class="form-destination">
+                         <label for="fname">First Namw</label>
+                         <input type="text" id="fname" name="fname"/>
+                    </div>
+                    <div class="form-destination">
+                         <label for="lname">Last Name</label>
+                         <input type="text" id="lname" name="lname"/>
+                   </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-destination">
+                        <label for="pid">Passenger ID</label>
+                        <input type="text" id="pid" name="pid"/>
+                    </div>
+                    <div class="form-destination">
+                        <label for="age">Age</label>
+                        <input type="text" id="age" name="age" />
+                    </div>
+                    <div class="form-destination">
+                        <label for="sex">Sex</label>
+                        <input type="text" id="sex" name="sex"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-destination" style="width=100%">
+                        <label for="address" size="50">Address</label>
+                        <!--<input type="text" id="address" name="address"/>-->
+                        <textarea id="address" name="address" cols="69" rows="5"></textarea>
+                    </div>
+                </div>
+
+                <h5>Flight Details</h5>
+                <div class="form-group">
+                    <div class="form-destination">
+                        <label for="destination">Destination</label>
+                        <input type="text" id="destination" name="destination" placeholder="EG. HAWAII" />
+                    </div>
+                    <div class="form-date-from form-icon">
+                        <label for="date_from">From</label>
+                        <input type="text" id="date_from" class="date_from" placeholder="Pick a date" />
+                        <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
+                    </div>
+                    <div class="form-date-to form-icon">
+                        <label for="date_to">To</label>
+                        <input type="text" id="date_to" class="date_to" placeholder="Pick a date" />
+                        <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
+                    </div>
+                    <div class="form-quantity">
+                        <label for="baggage">Baggage</label>
+                        <span class="modify-qty plus" onClick="Tang()"><i class="zmdi zmdi-chevron-up"></i></span>
+                        <input type="number" name="baggage" id="baggage" value="0" min="0" class="nput-text qty text">
+                        <span class="modify-qty minus" onClick="Giam()"><i class="zmdi zmdi-chevron-down"></i></span>
+                    </div>
+                    <div class="form-submit">
+                        <input type="submit" id="submit" class="submit" value="Book now" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
