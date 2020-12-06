@@ -24,6 +24,7 @@ def bookTicket():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    msg = ''
     if request.method == "POST":
         details = request.form
         id = details['empid']
@@ -36,8 +37,8 @@ def register():
         cur.execute("INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s)", (id, firstName, lastName, addr, job, sex))
         mysql.connection.commit()
         cur.close()
-        return 'success'
-    return render_template('employee.html')
+        msg = "Successfully registered as employee"
+    return render_template('employee.html', msg = msg)
 
 if __name__ == '__main__':
     app.run()
