@@ -195,15 +195,16 @@ body {
   color: #fff;
   background-image: url("../images/airport.png");
   background-repeat: no-repeat;
-  background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
-  -ms-background-size: cover;
-  background-position: center center;
+  background-size: auto 100%;
+  -moz-background-size: auto 100%;
+  -webkit-background-size: auto 100%;
+  -o-background-size: auto 100%;
+  -ms-background-size: auto 100%;
   font-weight: 600;
   font-family: Poppins;
-  margin: 0px; }
+  margin: 0px;
+  background-position: center;
+  }
 
 .main {
   position: relative; }
@@ -455,6 +456,21 @@ fieldset {
   min-width: 100%;
   padding: 0;
   width: 100%;
+}
+
+#form-container{
+    display: block;
+    text-align: center;
+    background: rgba(0,0,0,0);
+}
+
+#accesspanel {
+    display: inline-block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    position: relative;
 }
 
 #contact input[type="text"],

@@ -41,7 +41,7 @@ def register():
         mysql.connection.commit()
         cur.close()
         msg = "Successfully registered as employee"
-    return render_template('employee.html', msg = msg)
+    return render_template('employee.html', msg=msg)
 
 
 @app.route('/admin', methods=['GET', 'POST'])
@@ -49,29 +49,28 @@ def admin():
     msg = ''
     if request.method == "POST":
         details = request.form
-        user = details['user']
+        user = details['username']
         password = details['password']
         cursor = mysql.connection.cursor()
         cursor.execute('SELECT * FROM admin WHERE user = % s AND password = % s', (user, password))
         account = cursor.fetchone()
         if account:
             msg = 'Logged in successfully !'
-            return msg
-            # return render_template('adminHome.html')
+            return render_template('adminHome.html')
         else:
             msg = 'Incorrect username / password !'
-            return msg
 
-    return render_template('admin.html', msg= msg)
+    return render_template('admin.html', msg=msg)
+
 
 @app.route('/addAirport', methods=['GET', 'POST'])
 def addAirport():
     return render_template('addAirport.html')
 
+
 @app.route('/addAirline', methods=['GET', 'POST'])
 def addAirline():
     return render_template('addAirline.html')
-
 
 
 if __name__ == '__main__':
