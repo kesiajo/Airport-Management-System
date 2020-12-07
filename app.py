@@ -14,13 +14,16 @@ app.config['MYSQL_UNIX_SOCKET'] = '/opt/lampp/var/mysql/mysql.sock'
 
 mysql = MySQL(app)
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
 
+
 @app.route('/bookTicket', methods=['GET', 'POST'])
 def bookTicket():
     return render_template('book.html')
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -39,6 +42,37 @@ def register():
         cur.close()
         msg = "Successfully registered as employee"
     return render_template('employee.html', msg = msg)
+
+
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    msg = ''
+    if request.method == "POST":
+        details = request.form
+        user = details['user']
+        password = details['password']
+        cursor = mysql.connection.cursor()
+        cursor.execute('SELECT * FROM admin WHERE user = % s AND password = % s', (user, password))
+        account = cursor.fetchone()
+        if account:
+            msg = 'Logged in successfully !'
+            return msg
+            # return render_template('adminHome.html')
+        else:
+            msg = 'Incorrect username / password !'
+            return msg
+
+    return render_template('admin.html', msg= msg)
+
+@app.route('/addAirport', methods=['GET', 'POST'])
+def addAirport():
+    return render_template('addAirport.html')
+
+@app.route('/addAirline', methods=['GET', 'POST'])
+def addAirline():
+    return render_template('addAirline.html')
+
+
 
 if __name__ == '__main__':
     app.run()

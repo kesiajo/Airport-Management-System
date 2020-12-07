@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FLYAPP</title>
+
+    <!-- Font Icon -->
+    <link href="{{ url_for('static', filename='fonts/material-icon/css/material-design-iconic-font.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
+
+    <!-- Main css -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+    <div class="main">
+        <div class="topnav">
+            <a href="/" style="height: 58px">
+                <img src="{{ url_for('static', filename='images/header-text.png') }}" alt="">
+            </a>
+            <div class="topnav-right">
+                <a href="{{ url_for('register') }}">Register as Employee</a>
+                <a href="{{ url_for('admin') }}">Login as Admin</a>
+                <a href="/">Contact</a>
+            </div>
+        </div>
+
+        <div class="container" style="margin-top: 50px">
+            <form id="booking-form" class="booking-form" method="POST">
+                <div class="form-group">
+                    <a href="{{ url_for('addAirline') }}" class="button btn">ADD AN AIRLINE</a>
+                    <a href="{{ url_for('register') }}" class="button btn">ADD A FLIGHT</a>
+                    <a href="{{ url_for('admin') }}" class="button btn">ADD AN AIRPORT</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

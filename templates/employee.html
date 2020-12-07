@@ -17,10 +17,15 @@
 
     <div class="main">
 
-        <div class="header">
-            <a href="/">
-            <img src="{{ url_for('static', filename='images/header-text.png') }}" alt="">
-                </a>
+        <div class="topnav">
+            <a href="/" style="height: 58px">
+                <img src="{{ url_for('static', filename='images/header-text.png') }}" alt="">
+            </a>
+            <div class="topnav-right">
+                <a href="{{ url_for('register') }}">Register as Employee</a>
+                <a href="{{ url_for('admin') }}">Login as Admin</a>
+                <a href="/">Contact</a>
+            </div>
         </div>
 
         <div class="container" style="margin-top: 50px">
@@ -58,12 +63,10 @@
                         <textarea id="address" name="address" cols="69" rows="5"></textarea>
                     </div>
                     <div class="form-submit">
-                        <input type="submit" id="submit" class="submit" value="Book now" />
+                        <input type="submit" id="submit" class="submit" value="REGISTER" />
                     </div>
                 </div>
                 <h4>{{msg}}</h4>
-
-
             </form>
         </div>
     </div>
