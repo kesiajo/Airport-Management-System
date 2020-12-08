@@ -1,5 +1,5 @@
-from flask import Flask
-from flask import flash, render_template, request, redirect
+from flask import Flask, url_for
+from flask import flash, render_template, redirect
 from flask_mysqldb import MySQL
 from flask import request
 from tables import Results
@@ -18,7 +18,19 @@ mysql = MySQL(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    msg = ''
+    if request.method == "POST":
+        details = request.form
+        source = details['from']
+        destination = details['to']
+        cursor = mysql.connection.cursor()
+        cursor.execute('SELECT * FROM FLIGHT WHERE SOURCE = %s AND DESTINATION = %s', (source, destination))
+        results = cursor.fetchall()
+        if results:
+            return render_template('flights.html', table=results)
+        else:
+            msg = "No flights found"
+    return render_template('index.html', msg=msg)
 
 
 @app.route('/bookTicket', methods=['GET', 'POST'])
@@ -136,6 +148,40 @@ def find():
         # table = Results(results)
         # table.border = True
         return render_template('flights.html', table=results)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    msg = ''
+    if request.method == "POST":
+        details = request.form
+        id = details['empid']
+        fname = details['fname']
+        cursor = mysql.connection.cursor()
+        cursor.execute('SELECT * FROM employee WHERE empid = %s AND fname = % s', (id, fname))
+        account = cursor.fetchone()
+        if account:
+            msg = 'Logged in successfully !'
+            return redirect(url_for('update'))
+        else:
+            msg = 'Incorrect employee id / name !'
+
+    return render_template('empLogin.html', msg=msg)
+
+
+@app.route('/update', methods=['GET', 'POST'])
+def update():
+    msg = ''
+    if request.method == "POST":
+        details = request.form
+        fcode = details['fcode']
+        status = details['status']
+        cursor = mysql.connection.cursor()
+        cursor.execute('UPDATE TABLE FLIGHT SET STATUS = %s WHERE FLIGHT_CODE = %s ', (status, fcode))
+        mysql.connection.commit()
+        cursor.close()
+        msg = "Successfully added"
+    return render_template('empHome.html', msg=msg)
 
 if __name__ == '__main__':
     app.run()

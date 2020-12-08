@@ -31,11 +31,26 @@
 
         <div class="container" style="margin-top: 50px">
             <form id="booking-form" class="booking-form" method="POST">
+
                 <div class="form-group">
-                    <a href="{{ url_for('addAirline') }}" class="button btn">ADD AN AIRLINE</a>
-                    <a href="{{ url_for('addFlight') }}" class="button btn">ADD A FLIGHT</a>
-                    <a href="{{ url_for('addAirport') }}" class="button btn">ADD AN AIRPORT</a>
+                    <div class="form-destination">
+                       <label for="fcode">Flight Code</label>
+                       <input type="text" id="fcode" name="fcode" required />
+                    </div>
+                    <div class="form-destination">
+                         <label for="status">Status</label>
+                         <input type="text" id="status" name="status" required/>
+                    </div>
+
                 </div>
+                <div class="form-group">
+                    <div class="form-submit">
+
+                        <input type="submit" id="submit" class="submit" value="ADD" />
+                    </div>
+                </div>
+
+                <h4>{{msg}}</h4>
             </form>
         </div>
     </div>
