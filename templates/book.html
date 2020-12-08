@@ -21,10 +21,11 @@
             <a href="/" style="height: 58px">
                 <img src="{{ url_for('static', filename='images/header-text.png') }}" alt="">
             </a>
+            <a href="{{ url_for('find') }}">Find Flights</a>
             <div class="topnav-right">
                 <a href="{{ url_for('register') }}">Register as Employee</a>
-                <a href="#search">Login as Admin</a>
-                <a href="#about">Contact</a>
+                <a href="{{ url_for('admin') }}">Login as Admin</a>
+                <a href="/">Contact</a>
             </div>
         </div>
 

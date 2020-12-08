@@ -22,7 +22,7 @@
             <a href="/" style="height: 58px">
                 <img src="{{ url_for('static', filename='images/header-text.png') }}" alt="">
             </a>
-            <a href="{{ url_for('register') }}">Find Flights</a>
+            <a href="{{ url_for('find') }}">Find Flights</a>
             <div class="topnav-right">
                 <a href="{{ url_for('register') }}">Register as Employee</a>
                 <a href="{{ url_for('admin') }}">Login as Admin</a>
@@ -30,9 +30,9 @@
             </div>
         </div>
 
-        <div style="margin-top: 50px, margin-right: auto, margin-left: auto">
-            <h3>Available Flights</h3>
-            <table border="1" cellpadding="5" cellspacing="5">
+        <div>
+            <h2 style="text-align: center">Available Flights</h2>
+            <table class="styled-table">
                 <thead>
                 <tr>
                     <th>Flight Code</th>
@@ -46,6 +46,7 @@
                     <th>Layover Time</th>
                     <th>Number of Stops</th>
                     <th>Airline ID</th>
+                    <th>Book</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -53,8 +54,11 @@
                 <tr>
                     {% for d in row %}
                     <td>{{d}}</td>
+
                     {% endfor %}
+                    <td><a href="{{ url_for('bookTicket') }}" style="color:FFD700">BOOK NOW</a></td>
                 </tr>
+
                 {% endfor %}
                 </tbody>
             </table>
