@@ -1,4 +1,3 @@
-from flask import Flask
 from flask import Flask, render_template
 from flask_mysqldb import MySQL
 from flask import request
@@ -65,7 +64,19 @@ def admin():
 
 @app.route('/addAirport', methods=['GET', 'POST'])
 def addAirport():
-    return render_template('addAirport.html')
+    msg = ''
+    if request.method == 'POST':
+        details = request.form
+        name = details['ap_name']
+        state = details['state']
+        country = details['country']
+        city = details['city']
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO AIRPORT VALUES (%s, %s, %s, %s)", (name, state, country, city))
+        mysql.connection.commit()
+        cur.close()
+        msg = "Successfully added"
+    return render_template('addAirport.html', msg=msg)
 
 
 @app.route('/addAirline', methods=['GET', 'POST'])
