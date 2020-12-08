@@ -1,6 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask
+from flask import flash, render_template, request, redirect
 from flask_mysqldb import MySQL
 from flask import request
+from tables import Results
 
 app = Flask(__name__)
 
@@ -97,8 +99,43 @@ def addAirline():
 
 @app.route('/addFlight', methods=['GET', 'POST'])
 def addFlight():
-    return render_template('addFlight.html')
+    msg = ''
+    if request.method == 'POST':
+        details = request.form
+        code = details['code']
+        source = details['source']
+        destination = details['dest']
+        arrival = details['arr']
+        depart = details['dept']
+        status = details['status']
+        duration = details['duration']
+        f_type = details['type']
+        layover = details['layover']
+        stops = details['stops']
+        a_id = details['a_id']
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO FLIGHT VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (
+            code, source, destination, arrival, depart, status, duration, f_type, layover, stops, a_id)
+        )
+        mysql.connection.commit()
+        cur.close()
+        msg = "Successfully added"
+    return render_template('addFlight.html', msg=msg)
 
+
+@app.route("/find", methods=['GET'])
+def find():
+    cursor = mysql.connection.cursor()
+    cursor.execute('SELECT * FROM FLIGHT')
+    results = cursor.fetchall()
+    if not results:
+        flash('No results found!')
+        return redirect('/')
+    else:
+        # display results
+        # table = Results(results)
+        # table.border = True
+        return render_template('flights.html', table=results)
 
 if __name__ == '__main__':
     app.run()

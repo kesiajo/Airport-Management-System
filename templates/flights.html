@@ -16,13 +16,13 @@
 <body>
 
     <div class="main">
-        
+
 
         <div class="topnav">
             <a href="/" style="height: 58px">
                 <img src="{{ url_for('static', filename='images/header-text.png') }}" alt="">
             </a>
-            <a href="{{ url_for('find') }}">Find Flights</a>
+            <a href="{{ url_for('register') }}">Find Flights</a>
             <div class="topnav-right">
                 <a href="{{ url_for('register') }}">Register as Employee</a>
                 <a href="{{ url_for('admin') }}">Login as Admin</a>
@@ -30,14 +30,34 @@
             </div>
         </div>
 
-        <div class="container" style="margin-top: 50px">
-            <form id="booking-form" class="booking-form" method="POST">
-                <div class="form-group">
-                    <a href="{{ url_for('bookTicket') }}" class="button btn">BOOK YOUR TICKET</a>
-                    <a href="{{ url_for('register') }}" class="button btn">REGISTER AS EMPLOYEE</a>
-                    <button class="btn">EXISTING EMPLOYEE?</button>
-                </div>
-            </form>
+        <div style="margin-top: 50px, margin-right: auto, margin-left: auto">
+            <h3>Available Flights</h3>
+            <table border="1" cellpadding="5" cellspacing="5">
+                <thead>
+                <tr>
+                    <th>Flight Code</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Arrival</th>
+                    <th>Departure</th>
+                    <th>Status</th>
+                    <th>Duration</th>
+                    <th>Flight Type</th>
+                    <th>Layover Time</th>
+                    <th>Number of Stops</th>
+                    <th>Airline ID</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in table %}
+                <tr>
+                    {% for d in row %}
+                    <td>{{d}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 
