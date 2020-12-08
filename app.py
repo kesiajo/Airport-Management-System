@@ -70,7 +70,23 @@ def addAirport():
 
 @app.route('/addAirline', methods=['GET', 'POST'])
 def addAirline():
-    return render_template('addAirline.html')
+    msg = ''
+    if request.method == 'POST':
+        details = request.form
+        id = details['a_id']
+        name = details['a_name']
+        code = details['a_code']
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO AIRLINE VALUES (%s, %s, %s)", (id, name, code))
+        mysql.connection.commit()
+        cur.close()
+        msg = "Successfully added"
+    return render_template('addAirline.html', msg=msg)
+
+
+@app.route('/addFlight', methods=['GET', 'POST'])
+def addFlight():
+    return render_template('addFlight.html')
 
 
 if __name__ == '__main__':
