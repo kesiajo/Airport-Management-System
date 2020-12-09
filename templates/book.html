@@ -40,7 +40,7 @@
                        <input type="text" id="passport_no" name="passport_no" " />
                     </div>
                     <div class="form-destination">
-                         <label for="fname">First Namw</label>
+                         <label for="fname">First Name</label>
                          <input type="text" id="fname" name="fname"/>
                     </div>
                     <div class="form-destination">
@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group">
                     <div class="form-destination">
-                        <label for="pid">Passenger ID</label>
+                        <label for="pid">Phone Number</label>
                         <input type="text" id="pid" name="pid"/>
                     </div>
                     <div class="form-destination">
@@ -70,21 +70,20 @@
                     </div>
                 </div>
 
-                <h5>Flight Details</h5>
+                <h5>Ticket Details</h5>
                 <div class="form-group">
                     <div class="form-destination">
-                        <label for="destination">Destination</label>
-                        <input type="text" id="destination" name="destination" placeholder="EG. HAWAII" />
+                        <label for="class">Class</label>
+                        <input type="text" id="class" name="class"/>
                     </div>
                     <div class="form-date-from form-icon">
-                        <label for="date_from">From</label>
+                        <label for="date_from">Date of Travel</label>
                         <input type="text" id="date_from" class="date_from" placeholder="Pick a date" />
                         <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
                     </div>
-                    <div class="form-date-to form-icon">
-                        <label for="date_to">To</label>
-                        <input type="text" id="date_to" class="date_to" placeholder="Pick a date" />
-                        <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
+                     <div class="form-destination">
+                        <label for="seat">Seat No</label>
+                        <input type="text" id="seat" name="seat"/>
                     </div>
                     <div class="form-quantity">
                         <label for="baggage">Baggage</label>
@@ -92,7 +91,9 @@
                         <input type="number" name="baggage" id="baggage" value="0" min="0" class="nput-text qty text">
                         <span class="modify-qty minus" onClick="Giam()"><i class="zmdi zmdi-chevron-down"></i></span>
                     </div>
-                    <div class="form-submit">
+                </div>
+                <div class="form-group">
+                    <div class="form-submit" style="text-align: right">
                         <input type="submit" id="submit" class="submit" value="Book now" />
                     </div>
                 </div>

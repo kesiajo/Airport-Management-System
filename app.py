@@ -162,10 +162,9 @@ def login():
         account = cursor.fetchone()
         if account:
             msg = 'Logged in successfully !'
-            return redirect(url_for('update'))
+            return render_template('empOpt.html')
         else:
             msg = 'Incorrect employee id / name !'
-
     return render_template('empLogin.html', msg=msg)
 
 
@@ -177,11 +176,12 @@ def update():
         fcode = details['fcode']
         status = details['status']
         cursor = mysql.connection.cursor()
-        cursor.execute('UPDATE TABLE FLIGHT SET STATUS = %s WHERE FLIGHT_CODE = %s ', (status, fcode))
+        cursor.execute('UPDATE FLIGHT SET STATUS = %s WHERE FLIGHT_CODE = %s ', (status, fcode))
         mysql.connection.commit()
         cursor.close()
-        msg = "Successfully added"
+        msg = "Successfully updated"
     return render_template('empHome.html', msg=msg)
+
 
 if __name__ == '__main__':
     app.run()
